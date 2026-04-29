@@ -14,7 +14,7 @@ const services = [
     ),
     title: 'Consultancy',
     sub: 'ACADEMIC & RESEARCH SUPPORT',
-    href: '/consultancy',
+    href: '/services/consultancy',
     stat: '500+', statLabel: 'Projects Guided',
     desc: "At Forensleuth, we extend our expertise to support students, researchers, and academic institutions through specialized consultancy services. Whether you are pursuing a Bachelor's, Master's, or Ph.D., we're here to guide you at every stage of your academic journey.",
     points: [
@@ -35,7 +35,7 @@ const services = [
     ),
     title: 'Academic Services',
     sub: 'FORENSIC EDUCATION PROGRAMS',
-    href: '/academic-services',
+    href: '/services/academic-services',
     stat: '50+', statLabel: 'Programs Offered',
     desc: 'Forensleuth is dedicated to advancing forensic education through structured and skill-based academic offerings. Our programs blend theoretical knowledge with practical application, making forensic science accessible, engaging, and career-oriented.',
     points: [
@@ -57,7 +57,7 @@ const services = [
     ),
     title: 'Kits & Educational Tools',
     sub: 'HANDS-ON FORENSIC LEARNING',
-    href: '/kits-and-educational-tools',
+    href: '/services/kits-and-educational-tools',
     stat: '20+', statLabel: 'Kit Variants',
     desc: 'As part of our commitment to hands-on learning and scientific empowerment, Forensleuth offers specially curated forensic kits designed for students, educators, enthusiasts, and institutions — making forensic science interactive, practical, and accessible.',
     points: [

@@ -1,12 +1,12 @@
 'use client'
-
+import Link from 'next/link'
 export default function CTASection() {
   return (
     <section style={{ position: 'relative', padding: '120px 0', background: '#03060d', overflow: 'hidden' }}>
       {/* Full image BG */}
       <div style={{ position: 'absolute', inset: 0 }}>
         <img
-          src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=1920&q=80"
+          src="https://i.pinimg.com/736x/ca/91/86/ca918609ee373629ddac7483de1b3c06.jpg"
           alt=""
           style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.18) saturate(0.4)' }}
         />
@@ -46,25 +46,19 @@ export default function CTASection() {
         </p>
 
         <div style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Link href="/contact" >
           <button className="btn-solid" onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}>
             <span>Initiate Investigation</span>
           </button>
+          </Link>
+          <Link href="/services" >
           <button className="btn-run-border" onClick={() => document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })}>
             <span>View All Services</span>
           </button>
+          </Link>
         </div>
 
-        {/* Trust row */}
-        <div style={{ marginTop: 72, paddingTop: 48, borderTop: '1px solid #1a2d47', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px 48px' }}>
-          {['ISO 17025 Accredited', 'SWGDE Compliant', 'DOJ Certified', 'INTERPOL Partner', 'ISO 27001 Secure'].map((b) => (
-            <div key={b} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#207eff" strokeWidth="2.5">
-                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-              </svg>
-              <span style={{ fontFamily: 'Share Tech Mono', fontSize: 10, letterSpacing: 1.5, color: '#8099b8' }}>{b}</span>
-            </div>
-          ))}
-        </div>
+      
       </div>
     </section>
   )

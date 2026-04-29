@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '@/components/Footer'
-
+import Link from 'next/link'
 const GLOBAL_CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600&family=Share+Tech+Mono&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -50,7 +50,7 @@ const GLOBAL_CSS = `
   .leader-card {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, rgba(32, 126, 255, 0.05) 0%, rgba(250, 83, 48, 0.05) 100%);
+    // background: linear-gradient(135deg, rgba(32, 126, 255, 0.05) 0%, rgba(250, 83, 48, 0.05) 100%);
     border: 1px solid #1a2d47;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
@@ -65,7 +65,7 @@ const GLOBAL_CSS = `
   .leader-image {
     position: relative;
     overflow: hidden;
-    height: 380px;
+    height: 280px;
     background: linear-gradient(135deg, #101c2e, #0d1626);
   }
   
@@ -414,7 +414,7 @@ function BannerSection() {
   return (
     <section style={{ position:'relative', minHeight:'clamp(380px,45vw,520px)', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden', paddingTop:80 }}>
       <div style={{ position:'absolute', inset:0 }}>
-        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80" alt="Banner" style={{ width:'100%', height:'100%', objectFit:'cover', filter:'brightness(0.2) saturate(0.4) contrast(1.1)' }} />
+        <img src="https://i.pinimg.com/736x/78/93/41/789341167391b48950a058ebec57f8be.jpg" alt="Banner" style={{ width:'100%', height:'100%', objectFit:'cover', filter:'brightness(0.2) saturate(0.4) contrast(1.1)' }} />
       </div>
       <div style={{ position:'absolute', inset:0, background:'linear-gradient(90deg,rgba(3,6,13,.95),rgba(8,15,26,.8),rgba(3,6,13,.9))' }} />
       <div className="hex-grid-bright" style={{ position:'absolute', inset:0, opacity:0.7 }} />
@@ -479,8 +479,8 @@ function AboutCompany() {
           <div className="reveal" style={{ transitionDelay:'.2s' }}>
             <BracketBox>
               <div style={{ position:'relative', overflow:'hidden', border:'1px solid #1a2d47' }}>
-                <div className="scan-line" style={{ zIndex:10 }} />
-                <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=900&q=85" alt="Lab operations" style={{ width:'100%', height:'clamp(260px,38vw,420px)', objectFit:'cover', filter:'brightness(.55) contrast(1.1) saturate(.7)', display:'block' }} />
+                {/* <div className="scan-line" style={{ zIndex:10 }} /> */}
+                <img src="/11.jpeg" alt="Lab operations" style={{ width:'100%', height:'clamp(360px,55vw,520px)', objectFit:'cover', filter:'brightness(.55) contrast(1.1) saturate(.7)', display:'block' }} />
                 <div className="hex-grid" style={{ position:'absolute', inset:0, mixBlendMode:'overlay', opacity:0.4 }} />
                 <div style={{ position:'absolute', inset:0, background:'linear-gradient(to top,rgba(3,6,13,.6),transparent)' }} />
                 <div style={{ position:'absolute', bottom:16, left:16, display:'flex', alignItems:'center', gap:8 }}>
@@ -540,7 +540,7 @@ const ENHANCED_SERVICES = [
     id: 'empowerment',
     title: 'Educational Outreach',
     subtitle: 'OUTREACH · EDUCATION · COMMUNITY',
-    image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&h=500&fit=crop',
+    image: 'https://i.pinimg.com/736x/0a/f4/60/0af4600aeaeb53abaf86ddc90ed7cf10.jpg',
     shortDesc: 'Spreading forensic awareness through inclusive educational programs and community initiatives.',
     features: ['School & college outreach', 'Hands-on workshops', 'Community campaigns', 'NGO collaborations', 'Next-gen mentorship'],
     icon: '📚'
@@ -549,7 +549,7 @@ const ENHANCED_SERVICES = [
     id: 'kits',
     title: 'Forensic Tool Kits',
     subtitle: 'LEARNING · HANDS-ON · INTERACTIVE',
-    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=500&fit=crop',
+    image: '/1.jpeg',
     shortDesc: 'Interactive forensic kits designed for students, educators, and research institutions.',
     features: ['DIY learning kits', 'Student Tool kits', 'Professional Tool Kits', ],
     icon: '🔬'
@@ -558,7 +558,7 @@ const ENHANCED_SERVICES = [
     id: 'investigation',
     title: 'Expert Investigations',
     subtitle: 'FORENSIC · CYBER · LEGAL',
-    image: 'https://images.unsplash.com/photo-1549888534-fb0a9733b4cc?w=600&h=500&fit=crop',
+    image: '/11.jpeg',
     shortDesc: 'Professional forensic and cyber investigation services for corporate and legal clients.',
     features: ['Digital forensics', 'Document & FingerPrint examination', 'Cyber incident response', 'Crime reconstruction', 'Expert testimony'],
     icon: '🔍'
@@ -571,7 +571,7 @@ function ServiceCardEnhanced({ service, isOpen, onToggle }) {
     <div className="service-card-enhanced">
       <div className="service-image-wrapper">
         <img src={service.image} alt={service.title} />
-        <div className="scan-line" style={{ zIndex: 10 }} />
+        {/* <div className="scan-line" style={{ zIndex: 10 }} /> */}
         <div className="service-overlay" />
       </div>
       
@@ -619,7 +619,7 @@ function EnhancedCapabilitiesSection() {
           <h2 className="section-title font-orbitron">
             WHAT WE <span>PROVIDE</span>
           </h2>
-          <p className="font-rajdhani" style={{ fontSize:'clamp(14px,2vw,18px)', color:'#8099b8' }}>Click any card to expand full service details</p>
+          {/* <p className="font-rajdhani" style={{ fontSize:'clamp(14px,2vw,18px)', color:'#8099b8' }}>Click any card to expand full service details</p> */}
         </div>
         
         <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap:24 }}>
@@ -646,9 +646,9 @@ function EnhancedCapabilitiesSection() {
 const ENHANCED_LEADERS = [
   {
     role: 'FOUNDER ',
-    name: 'Animesh ',
+    name: 'Animesh Pandey',
     title: 'Cheif Ecxecutive Officer',
-    image: '/animesh.jpeg',
+    image: '/animesh1.jpeg',
     bio: 'As the CEO of Forensleuth, Animesh is committed to building a trusted platform for forensic investigation, research consultancy, and professional education while maintaining the highest standards of quality and integrity.',
     expertise: ['Forensic Ballistics', 'FingerPrint and questioned document', 'Digital Forensics', 'Crime Scene investigation'],
     highlights: ['12+ Years Experience', '200+ Court Cases', '500+ Students Trained']
@@ -657,7 +657,7 @@ const ENHANCED_LEADERS = [
     role: 'CO-FOUNDER ',
     name: 'Gunjan Saxena',
     title: 'Cheif Operating Officer',
-    image: '/gunjan.jpeg',
+    image: '/gunjan1.jpeg',
     bio: 'With a strong commitment to operational efficiency and organizational growth, Gunjan plays a key role in strengthening Forensleuth’s vision of delivering trusted forensic and research solutions.',
     expertise: ['Forensic Toxicology', 'FingerPrint and questioned document', 'Forensic Chemistry', 'Cyber Forensics'],
     highlights: ['', 'Cyber Expert', 'Operations Lead']
@@ -669,8 +669,8 @@ function LeaderCard({ leader }) {
     <div className="leader-card reveal">
       <div className="leader-image">
         <img src={leader.image} alt={leader.name} />
-        <div className="scan-line" style={{ zIndex: 10 }} />
-        <div className="leader-overlay" />
+        {/* <div className="scan-line" style={{ zIndex: 10 }} /> */}
+        {/* <div className="leader-overlay" /> */}
         <div className="leader-badge">
           <span style={{ fontSize: '10px', letterSpacing: '2px', color: '#207eff', textTransform: 'uppercase' }}>
             {leader.role}
@@ -736,8 +736,8 @@ function EnhancedLeadershipSection() {
 
 // ===== SECTION 6: MISSION & VISION =====
 const MISSION_PANELS = [
-  { tag:'MISSION_STATEMENT', label:'OUR', word:'MISSION', accent:'#207eff', icon:<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>, p1:'To democratize forensic science by making expert-level knowledge, tools, and investigation services accessible to all.', p2:'We are committed to upholding scientific integrity, promoting justice, and bridging the gap between forensic science and everyday society.', bullets:['Accessible forensic education for all','Scientific integrity in every engagement','Community-first approach to justice'] },
-  { tag:'VISION_DIRECTIVE', label:'OUR', word:'VISION', accent:'#fa5330', icon:<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>, p1:"To become India's most trusted forensic science organization — a beacon of scientific excellence.", p2:"We envision a world where forensic science is a tool of empowerment for the many — where truth is always accessible and justice scientifically grounded.", bullets:["South Asia's leading forensic institution",'Forensic science as a public tool for justice','Tech-driven, human-centred investigations'] },
+  { tag:'MISSION_STATEMENT', label:'OUR', word:'MISSION', accent:'#207eff', icon:<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>, p1:' Our mission is to empower students with knowledge and skills to navigate the digital world safely, ensuring they are well-equipped to identify, prevent, and respond to cyber threats. Through education, awareness, and hands-on support, we aim to foster a responsible and secure digital culture among young minds.', p2:'We are committed to upholding scientific integrity, promoting justice, and bridging the gap between forensic science and everyday society.', bullets:['Accessible forensic education for all','Scientific integrity in every engagement','Community-first approach to justice'] },
+  { tag:'VISION_DIRECTIVE', label:'OUR', word:'VISION', accent:'#fa5330', icon:<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>, p1:" We envision a future where every student is digitally literate, cyber-aware, and tech-confident, making informed decisions in an increasingly digital world. Our goal is to build a community of responsible digital citizens who can protect themselves and others from online threats while harnessing technology for innovation and growth. ", p2:"We envision a world where forensic science is a tool of empowerment for the many — where truth is always accessible and justice scientifically grounded.", bullets:["India's leading forensic institution",'Forensic science as a public tool for justice',' human-centred investigations'] },
 ]
 
 function MissionVision() {
@@ -828,8 +828,9 @@ function OurGoal() {
         </div>
 
         <div className="reveal" style={{ display:'flex', flexWrap:'wrap', gap:14, justifyContent:'center', transitionDelay:'.35s' }}>
-          <button className="btn-solid">Start Investigation</button>
-          <button className="btn-outline">Learn More</button>
+      
+      <Link href="contact">  <button className="btn-solid">Start Investigation</button></Link>  
+        <Link href="/seervices">  <button className="btn-outline">Learn More</button></Link>  
         </div>
       </div>
     </section>

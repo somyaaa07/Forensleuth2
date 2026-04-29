@@ -22,21 +22,34 @@ import { CyberCorners } from "./ui";
 
 // Curated Unsplash fallbacks keyed by service slug
 const FALLBACK_IMAGES = {
-  "digital-forensics":       "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80",
-  "cyber-incident-response": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=600&q=80",
-  "mobile-forensics":        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
-  "network-forensics":       "https://images.unsplash.com/photo-1545987796-200677ee1011?w=600&q=80",
-  "osint-investigations":    "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80",
+  "digital-forensics":       "https://i.pinimg.com/1200x/5c/41/8b/5c418b3c435417aca3e4f197d781b668.jpg",
+  "cyber-incident-response": "https://i.pinimg.com/736x/bd/46/47/bd4647cef35693fa03b9b3ec30ecae39.jpg",
+  "mobile-forensics":        "https://i.pinimg.com/1200x/02/16/11/02161195149f0dd5807348889e19a0c1.jpg",
+  "network-forensics":       "https://i.pinimg.com/1200x/1a/54/7c/1a547ca2a68ef92454b6e4df04eaf44b.jpg",
+  "osint-investigations":    "https://i.pinimg.com/1200x/6f/da/05/6fda05aff456a22e91ec0b5b865301c1.jpg",
   "forensic-training":       "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80",
 };
 
-const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=600&q=80";
+// Slug-based fallback by index (for unknown slugs)
+const INDEX_FALLBACKS = [
+  "https://i.pinimg.com/1200x/5c/41/8b/5c418b3c435417aca3e4f197d781b668.jpg",
+  "https://i.pinimg.com/736x/bd/46/47/bd4647cef35693fa03b9b3ec30ecae39.jpg",
+  "https://i.pinimg.com/1200x/02/16/11/02161195149f0dd5807348889e19a0c1.jpg",
+  "https://i.pinimg.com/1200x/1a/54/7c/1a547ca2a68ef92454b6e4df04eaf44b.jpg",
+  "https://i.pinimg.com/1200x/6f/da/05/6fda05aff456a22e91ec0b5b865301c1.jpg",
+  "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80",
+];
 
 export default function ServiceCard({ service, delay = 0 }) {
   const [hovered, setHovered] = useState(false);
   const accent = service.accentColor || "#207eff";
   const isOrange = accent === "#fa5330";
-  const image = service.image || FALLBACK_IMAGES[service.slug] || DEFAULT_IMAGE;
+
+  // Priority: service.image → slug-based fallback → index-based fallback
+  const image =
+    service.image ||
+    FALLBACK_IMAGES[service.slug] ||
+    INDEX_FALLBACKS[(service.id - 1) % INDEX_FALLBACKS.length];
 
   return (
     <div

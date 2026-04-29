@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState } from 'react'
 
 const gallery = [
-  { src: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=80', label: 'Digital Forensics Lab', size: 'large' },
-  { src: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80', label: 'Mobile Device Analysis', size: 'small' },
-  { src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80', label: 'Forensic Training', size: 'small' },
-  { src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80', label: 'Data Visualization', size: 'small' },
-  { src: 'https://images.unsplash.com/photo-1545987796-200677ee1011?w=600&q=80', label: 'Network Analysis', size: 'small' },
-  { src: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=900&q=80', label: 'OSINT Operations', size: 'large' },
+  { src: '/1.jpeg',  size: 'large' },
+  { src: '/6.jpeg',  size: 'small' },
+  { src: '/16.PNG', size: 'small' },
+  { src: '/17.jpeg', size: 'small' },
+  { src: '/15.jpeg', size: 'small' },
+  { src: '/19.jpeg', size: 'large' },
 ]
 
 const events = [

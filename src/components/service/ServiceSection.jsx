@@ -10,7 +10,7 @@ import { HexGrid, Breadcrumb } from "./ui";
 //  Curated Unsplash fallback is used when no bgImage is passed.
 // ─────────────────────────────────────────────────────────────
 
-const DEFAULT_BG = "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=1400&q=70";
+const DEFAULT_BG = "https://i.pinimg.com/1200x/5c/41/8b/5c418b3c435417aca3e4f197d781b668.jpg";
 
 export default function ServicesSection({
   label = "FORENSLEUTH",

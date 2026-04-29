@@ -5,15 +5,15 @@ import { useState, useRef, useEffect } from 'react'
 const contactInfo = [
   {
     svg: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>),
-    label: 'LOCATION', val: 'ForensLeuth HQ', sub: 'Cyber City, Sec 24, Gurugram HR 122002',
+    label: 'LOCATION', val: 'Forensleuth ', sub: 'Greater Noida',
   },
   {
     svg: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z"/></svg>),
-    label: 'COMMS', val: '+91 (011) 4567-8900', sub: 'Emergency: +91 98765-43210',
+    label: 'COMMS', val: '+91 9818194316', sub: 'Emergency: +91 7840010208',
   },
   {
     svg: (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>),
-    label: 'SECURE MAIL', val: 'investigations@forensleuth.in', sub: 'PGP key available on request',
+    label: 'SECURE MAIL', val: 'forensleuth@gmail.com', sub: '',
   },
 ]
 
@@ -99,7 +99,7 @@ export default function Contact() {
           <div>
             <div style={{ position: 'relative', marginBottom: 4, overflow: 'hidden', height: 'clamp(160px, 20vw, 220px)' }}>
               <img
-                src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=600&q=80"
+                src="12.jpeg"
                 alt="Location"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.35) saturate(0.4) contrast(1.1)' }}
               />
@@ -107,7 +107,7 @@ export default function Contact() {
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent, rgba(3,6,13,0.8))' }} />
               <div style={{ position: 'absolute', bottom: 16, left: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
                 <div style={{ width: 8, height: 8, background: '#fa5330', boxShadow: '0 0 12px #fa5330', borderRadius: '50%' }} />
-                <span style={{ fontFamily: 'Orbitron', fontSize: 9, letterSpacing: 3, color: '#fa5330' }}>GURUGRAM HQ</span>
+                <span style={{ fontFamily: 'Orbitron', fontSize: 9, letterSpacing: 3, color: '#fa5330' }}>Greater Noida</span>
               </div>
             </div>
 

@@ -6,21 +6,21 @@ import Link from 'next/link'
 
 const slides = [
   {
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=90',
+    image: 'https://i.pinimg.com/736x/78/93/41/789341167391b48950a058ebec57f8be.jpg',
     tag: 'DIGITAL FORENSICS',
     headline: ['DIGITAL EVIDENCE', 'DECODED.'],
     sub: 'Advanced forensic intelligence platform for cyber investigators, law enforcement, and legal professionals.',
     accent: '#207eff',
   },
   {
-    image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1920&q=90',
+    image: 'https://i.pinimg.com/1200x/ca/b0/5f/cab05fca369f5dfd89e96e12eb9da1c4.jpg',
     tag: 'INCIDENT RESPONSE',
     headline: ['TRACE EVERY', 'BYTE.'],
     sub: 'Rapid-response cyber analysis uncovering hidden trails across networks, devices, and encrypted systems.',
     accent: '#fa5330',
   },
   {
-    image: 'https://images.unsplash.com/photo-1545987796-200677ee1011?w=1920&q=90',
+    image: 'https://i.pinimg.com/1200x/10/06/23/100623f85425928c26997eb0961837dd.jpg',
     tag: 'OSINT INTELLIGENCE',
     headline: ['TRUTH IN THE', 'DATA.'],
     sub: 'From network intrusions to mobile forensics — we find what others miss, with zero room for error.',

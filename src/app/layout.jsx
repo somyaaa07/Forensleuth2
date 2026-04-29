@@ -1,8 +1,8 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'Forensleuth — Forensic Science & Cyber Intelligence',
-  description: 'Advanced digital forensics, cyber investigation, and evidence analysis.',
+  title: 'Forensleuth — Forensic Science & Academic Services',
+  description: 'Advanced forensics  Research and Investigation analysis.',
 }
 
 export default function RootLayout({ children }) {

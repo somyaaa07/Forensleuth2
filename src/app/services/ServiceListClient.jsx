@@ -100,7 +100,7 @@ export default function ServicesListClient({ services = [] }) {
       {/* ── SERVICE GRID ──────────────────────────────────── */}
       <section style={{ position: "relative", padding: "48px 24px 80px", overflow: "hidden" }}>
         <HexGrid opacity={0.04} />
-        <div style={{ position: "relative", zIndex: 2, maxWidth: "1200px", margin: "0 auto" }}>
+        <div style={{ position: "relative", zIndex: 2, maxWidth: "1280px", margin: "0 auto" }}>
 
           <SectionHeading label="CAPABILITIES" title="WHAT WE OFFER" accent="#207eff" />
 
@@ -155,7 +155,7 @@ export default function ServicesListClient({ services = [] }) {
 
       {/* ── FOOTER LINE ───────────────────────────────────── */}
       <div style={{ padding: "18px 24px", textAlign: "center", fontFamily: "'Share Tech Mono', monospace", fontSize: "10px", color: "#374151", letterSpacing: ".12em", borderTop: "1px solid #0d1a2d" }}>
-        © 2025 FORENSLEUTH &nbsp;·&nbsp; ALL EVIDENCE PRESERVED &nbsp;·&nbsp;
+        © 2024 FORENSLEUTH &nbsp;·&nbsp; ALL EVIDENCE PRESERVED &nbsp;·&nbsp;
         <span style={{ color: "#207eff55" }}>FSL-SYS v4.2.1</span>
       </div>
     </main>

@@ -91,13 +91,13 @@ function CornerBrackets({ size=24, blue='#207eff', orange='#fa5330' }) {
 }
 
 const INFO_CARDS = [
-  { label: 'Our Location', tag: 'HQ::INDIA', value: '12-B Forensic Park, Sector 62, Noida, UP — 201301', accent: '#207eff', variant: '',
+  { label: 'Our Location', tag: 'HQ::INDIA', value: 'Greater Noida', accent: '#207eff', variant: '',
     icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> },
-  { label: 'Email Address', tag: 'SECURE::CHANNEL', value: 'investigations@forensleuth.in', subvalue: 'legal@forensleuth.in', accent: '#fa5330', variant: 'info-card-orange',
+  { label: 'Email Address', tag: 'SECURE::CHANNEL', value: ' forensleuth@gmail.com', subvalue: 'info@forensleuth.com', accent: '#fa5330', variant: 'info-card-orange',
     icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> },
-  { label: 'Phone / WhatsApp', tag: 'DIRECT::LINE', value: '+91 98765 43210', subvalue: '+91 11 4567 8900', accent: '#207eff', variant: '',
+  { label: 'Phone / WhatsApp', tag: 'DIRECT::LINE', value: '+91 9818194316', subvalue: '+91 7840010208', accent: '#207eff', variant: '',
     icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg> },
-  { label: 'Working Hours', tag: 'SCHEDULE::OPS', value: 'Mon – Sat : 09:00 – 19:00 IST', subvalue: 'Emergency: 24 × 7', accent: '#fa5330', variant: 'info-card-orange',
+  { label: 'Working Hours', tag: 'SCHEDULE::OPS', value: '24*7', subvalue: 'Emergency: 24 × 7', accent: '#fa5330', variant: 'info-card-orange',
     icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> },
 ]
 
@@ -222,13 +222,13 @@ function ContactForm() {
               <div style={{ width:36, height:36, flexShrink:0, display:'flex', alignItems:'center', justifyContent:'center', border:'1px solid rgba(32,126,255,.33)', background:'rgba(32,126,255,.08)', fontSize:16 }}>🔒</div>
               <div>
                 <div className="font-orbitron" style={{ fontWeight:700, color:'#c8d8eb', fontSize:10, letterSpacing:'0.1em', marginBottom:3 }}>Confidential Case Handling</div>
-                <div className="font-rajdhani" style={{ fontSize:13, color:'#8099b8' }}>NDA-protected from first contact</div>
+                <div className="font-rajdhani" style={{ fontSize:13, color:'#8099b8' }}>Need expert support in forensic science</div>
               </div>
             </div>
             <div style={{ padding:'16px', border:'1px solid #1a2d47', background:'rgba(32,126,255,.03)', position:'relative' }}>
               <CornerBrackets size={10} blue="#207eff" orange="#fa5330" />
-              <div className="font-mono-fl" style={{ fontSize:8, letterSpacing:'3px', color:'#207eff', textTransform:'uppercase', marginBottom:8 }}>Emergency::Cyber Incident</div>
-              <p className="font-rajdhani" style={{ fontSize:13, color:'#8099b8', marginBottom:14, lineHeight:1.6 }}>Ransomware attack, data breach, or active intrusion? Escalate immediately.</p>
+              <div className="font-mono-fl" style={{ fontSize:8, letterSpacing:'3px', color:'#207eff', textTransform:'uppercase', marginBottom:8 }}>Emergency::Triage</div>
+              <p className="font-rajdhani" style={{ fontSize:13, color:'#8099b8', marginBottom:14, lineHeight:1.6 }}>From academic guidance to forensic investigation, Forensleuth delivers expert-driven solutions tailored to your needs.</p>
               <button className="btn-outline-fl" style={{ fontSize:9, padding:'10px 20px', letterSpacing:'2px', width:'100%', justifyContent:'center' }}>Emergency Escalation</button>
             </div>
           </div>
@@ -318,7 +318,7 @@ export default function ContactPage() {
         <HeroSection />
         <InfoCards />
         <ContactForm />
-        <CtaSection />
+        {/* <CtaSection /> */}
         <Footer/>
       </main>
     </>

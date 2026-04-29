@@ -632,7 +632,7 @@ export default function CareerPage() {
                     label="Field of Study"
                     value={form.fieldOfStudy}
                     onChange={set("fieldOfStudy")}
-                    placeholder="e.g. Computer Science, Law, etc."
+                    placeholder="e.g. Forensic Science..."
                   />
 
                   {/* Role */}
@@ -648,7 +648,7 @@ export default function CareerPage() {
                     label="Key Skills (Mention your relevant skills)"
                     value={form.keySkills}
                     onChange={set("keySkills")}
-                    placeholder="e.g. Python, OSINT, Digital Forensics, React..."
+                    placeholder="e.g. Investigation Forensics..."
                   />
 
                   {/* Preferred Work Type */}

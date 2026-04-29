@@ -14,25 +14,25 @@ import { HexGrid, SectionHeading, CyberCorners, ForensleuthStyles } from "../../
 
 // Curated Unsplash images per slug
 const SERVICE_IMAGES = {
-  "digital-forensics":       "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=75",
-  "cyber-incident-response": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1400&q=75",
-  "mobile-forensics":        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1400&q=75",
-  "network-forensics":       "https://images.unsplash.com/photo-1545987796-200677ee1011?w=1400&q=75",
-  "osint-investigations":    "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1400&q=75",
-  "forensic-training":       "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&q=75",
+  "digital-forensics":       "https://i.pinimg.com/1200x/6f/da/05/6fda05aff456a22e91ec0b5b865301c1.jpg",
+  "cyber-incident-response": "https://i.pinimg.com/1200x/bd/46/47/bd4647cef35693fa03b9b3ec30ecae39.jpg",
+  "mobile-forensics":        "https://i.pinimg.com/1200x/02/16/11/02161195149f0dd5807348889e19a0c1.jpg",
+  "network-forensics":       "https://i.pinimg.com/1200x/1a/54/7c/1a547ca2a68ef92454b6e4df04eaf44b.jpg",
+  "osint-investigations":    "https://i.pinimg.com/1200x/6f/da/05/6fda05aff456a22e91ec0b5b865301c1.jpg",
+  "forensic-training":       "https://i.pinimg.com/1200x/5c/41/8b/5c418b3c435417aca3e4f197d781b668.jpg",
 };
 
 const OVERVIEW_IMAGES = {
-  "digital-forensics":       "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=700&q=80",
-  "cyber-incident-response": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=80",
-  "mobile-forensics":        "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=700&q=80",
-  "network-forensics":       "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=700&q=80",
-  "osint-investigations":    "https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&q=80",
-  "forensic-training":       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700&q=80",
+  "digital-forensics":       "https://i.pinimg.com/700x/5c/41/8b/5c418b3c435417aca3e4f197d781b668.jpg",
+  "cyber-incident-response": "https://i.pinimg.com/700x/bd/46/47/bd4647cef35693fa03b9b3ec30ecae39.jpg",
+  "mobile-forensics":        "https://i.pinimg.com/700x/02/16/11/02161195149f0dd5807348889e19a0c1.jpg",
+  "network-forensics":       "https://i.pinimg.com/700x/1a/54/7c/1a547ca2a68ef92454b6e4df04eaf44b.jpg",
+  "osint-investigations":    "https://i.pinimg.com/700x/6f/da/05/6fda05aff456a22e91ec0b5b865301c1.jpg",
+  "forensic-training":       "https://i.pinimg.com/700x/5c/41/8b/5c418b3c435417aca3e4f197d781b668.jpg",
 };
 
-const DEFAULT_BG   = "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=1400&q=70";
-const DEFAULT_OV   = "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=700&q=80";
+const DEFAULT_BG   = "https://i.pinimg.com/1200x/5c/41/8b/5c418b3c435417aca3e4f197d781b668.jpg";
+const DEFAULT_OV   = "https://i.pinimg.com/1200x/bd/46/47/bd4647cef35693fa03b9b3ec30ecae39.jpg";
 
 // ── Reveal on scroll ─────────────────────────────────────────
 function useReveal(threshold = 0.15) {
@@ -128,8 +128,8 @@ export default function ServiceDetailClient({ service }) {
   const ovImage  = OVERVIEW_IMAGES[service.slug]  || DEFAULT_OV;
 
   const allSlugs = [
-    "digital-forensics", "cyber-incident-response", "mobile-forensics",
-    "network-forensics",  "osint-investigations",    "forensic-training",
+    "empowerment-initiatives", "kits-and-educational-tools", "investigation-services",
+    "academic-services",  "consultancy",   
   ];
   const currentIdx = allSlugs.indexOf(service.slug);
   const prevSlug   = currentIdx > 0                   ? allSlugs[currentIdx - 1] : null;
@@ -384,7 +384,7 @@ export default function ServiceDetailClient({ service }) {
                 CONTACT US
               </a>
               <a
-                href="/contact?type=consultation"
+                href="/broucher"
                 style={{
                   padding: "14px 32px", borderRadius: "10px",
                   background: "transparent",
@@ -398,7 +398,7 @@ export default function ServiceDetailClient({ service }) {
                 onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 0 20px ${accent}33`; e.currentTarget.style.borderColor = accent; e.currentTarget.style.color = accent; }}
                 onMouseLeave={e => { e.currentTarget.style.boxShadow = "none";                  e.currentTarget.style.borderColor = `${accent}55`;    e.currentTarget.style.color = `${accent}cc`; }}
               >
-                REQUEST CONSULTATION
+               View Broucher
               </a>
             </div>
           </Reveal>
@@ -431,7 +431,7 @@ export default function ServiceDetailClient({ service }) {
           borderTop: "1px solid #0d1a2d",
         }}
       >
-        © 2025 FORENSLEUTH &nbsp;·&nbsp; ALL EVIDENCE PRESERVED &nbsp;·&nbsp;
+        © 2024 FORENSLEUTH &nbsp;·&nbsp; ALL EVIDENCE PRESERVED &nbsp;·&nbsp;
         <span style={{ color: "#207eff55" }}>FSL-SYS v4.2.1</span>
       </div>
     </main>

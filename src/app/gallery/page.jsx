@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import Link from 'next/link'
 
 const GLOBAL_CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600&family=Share+Tech+Mono&display=swap');
@@ -140,24 +141,24 @@ const GLOBAL_CSS = `
 `
 
 const GALLERY_ITEMS = [
-  { id: 1,  title: 'Fingerprint Analysis Workshop',     category: 'Workshops',      image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=600&q=80&h=700&fit=crop', description: 'Students learning advanced fingerprint lifting and comparison techniques using real forensic equipment in a controlled lab setting.' },
-  { id: 2,  title: 'Digital Evidence Extraction',       category: 'Investigation',  image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80&h=650&fit=crop', description: 'Certified investigators performing mobile forensics and data recovery from seized digital devices using Cellebrite and FTK.' },
-  { id: 3,  title: 'Forensic Kit Demonstration',        category: 'Kits & Tools',   image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&q=80&h=750&fit=crop', description: 'Live demonstration of our Forensleuth DIY Crime Scene Kit.' },
-  { id: 4,  title: 'Cyber Crime Response Training',     category: 'Training',       image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80&h=680&fit=crop', description: 'Intensive 3-day CSIRT training program covering incident triage, log analysis, malware sandboxing, and network forensics.' },
-  { id: 5,  title: 'Annual Forensic Science Seminar',   category: 'Events',         image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&h=720&fit=crop', description: 'National-level seminar bringing together 200+ forensic professionals and academic researchers.' },
-  { id: 6,  title: 'Document Forgery Detection',        category: 'Investigation',  image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&h=640&fit=crop', description: 'Questioned document examiners analysing suspected forged signatures using ESDA, VSC, and infrared spectroscopy.' },
-  { id: 7,  title: 'School Outreach Programme',         category: 'Workshops',      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80&h=700&fit=crop', description: 'Forensleuth experts visiting secondary schools to introduce students to forensic science.' },
-  { id: 8,  title: 'Advanced DNA Profiling Lab',        category: 'Training',       image: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600&q=80&h=680&fit=crop', description: 'Post-graduate trainees performing STR analysis under expert supervision.' },
-  { id: 9,  title: 'Trace Evidence Collection Kit',     category: 'Kits & Tools',   image: 'https://images.unsplash.com/photo-1581093196277-9f6e9b964e4b?w=600&q=80&h=710&fit=crop', description: 'New institutional kit bundle.' },
-  { id: 10, title: 'Cyber Forensics Summit 2024',       category: 'Events',         image: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&q=80&h=660&fit=crop', description: 'Two-day summit with keynotes from CERT-In officials and hands-on CTF challenges.' },
-  { id: 11, title: 'Crime Scene Reconstruction',        category: 'Investigation',  image: 'https://images.unsplash.com/photo-1621631186817-c5cc0ae40c49?w=600&q=80&h=730&fit=crop', description: '3D photogrammetric mapping of a mock crime scene.' },
-  { id: 12, title: 'Forensic Photography Workshop',     category: 'Workshops',      image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=80&h=690&fit=crop', description: 'Learning scale-accurate forensic photography techniques.' },
+  { id: 1,          image: '/1.jpeg', description: 'Students learning advanced fingerprint lifting and comparison techniques using real forensic equipment in a controlled lab setting.' },
+  { id: 2,          image: '/2.jpeg', description: 'Certified investigators performing mobile forensics and data recovery from seized digital devices using Cellebrite and FTK.' },
+  { id: 3,   image: '/3.jpeg', description: 'Live demonstration of our Forensleuth DIY Crime Scene Kit.' },
+  { id: 4,              image: '/4.jpeg', description: 'Intensive 3-day CSIRT training program covering incident triage, log analysis, malware sandboxing, and network forensics.' },
+  { id: 5,             image: '/5.jpeg', description: 'National-level seminar bringing together 200+ forensic professionals and academic researchers.' },
+  { id: 6,          image: '/6.jpeg', description: 'Questioned document examiners analysing suspected forged signatures using ESDA, VSC, and infrared spectroscopy.' },
+  { id: 7,              image: '/8.jpeg', description: 'Forensleuth experts visiting secondary schools to introduce students to forensic science.' },
+  { id: 8,               image: '/9.jpeg', description: 'Post-graduate trainees performing STR analysis under expert supervision.' },
+  { id: 9,        image: '/16.PNG', description: 'New institutional kit bundle.' },
+  { id: 10,                image: '/15.jpeg', description: 'Two-day summit with keynotes from CERT-In officials and hands-on CTF challenges.' },
+  { id: 11,         image: '/17.jpeg', description: '3D photogrammetric mapping of a mock crime scene.' },
+  { id: 12,         image: '/19.jpeg', description: 'Learning scale-accurate forensic photography techniques.' },
 ]
 
 const FEATURED_ITEMS = [
-  { id: 'f1', title: 'Operation: Shadow Protocol', tag: 'CASE STUDY · CYBER', accent: '#207eff', image: 'https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=1200&q=80', description: "A landmark 60-day cyber investigation involving cross-border data exfiltration and corporate espionage. Forensleuth's CSIRT team recovered 14TB of encrypted evidence." },
-  { id: 'f2', title: 'Handwriting Fraud Uncovered', tag: 'CASE STUDY · DOCUMENTS', accent: '#fa5330', image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80', description: 'Forensic document examination of 400+ questioned signatures across a high-profile corporate inheritance dispute.' },
-  { id: 'f3', title: 'National Training Cohort 2024', tag: 'INITIATIVE · TRAINING', accent: '#207eff', image: 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=1200&q=80', description: 'Forensleuth trained 340 investigators across 6 states — the largest cohort in our history.' },
+  { id: 'f1', tag: 'CASE STUDY · CYBER', accent: '#207eff', image: '/10.jpeg' },
+  { id: 'f2', tag: 'CASE STUDY · DOCUMENTS', accent: '#fa5330', image: '/11.jpeg' },
+  { id: 'f3', tag: 'INITIATIVE · TRAINING', accent: '#207eff', image: '/12.jpeg' },
 ]
 
 const CATEGORIES = ['All', 'Workshops', 'Investigation', 'Training', 'Kits & Tools', 'Events']
@@ -255,7 +256,7 @@ function MasonryGallery({ items, onOpen }) {
   return (
     <section ref={ref} style={{ position:'relative', padding:'40px 0', background:'#03060d', overflow:'hidden' }}>
       <div className="hex-grid" style={{ position:'absolute', inset:0, opacity:0.4 }} />
-      <div style={{ position:'relative', maxWidth:1400, margin:'0 auto', padding:'0 16px' }}>
+      <div style={{ position:'relative', maxWidth:1280, margin:'0 auto', padding:'0 16px' }}>
         <div className="masonry-container">
           {items.map((item, i) => (
             <div key={item.id} className="reveal pin-card" style={{ transitionDelay:`${(i % 8) * 0.05}s` }} onClick={() => onOpen(item)}>
@@ -324,19 +325,7 @@ function Lightbox({ item, items, onClose, onNav }) {
             </button>
           </div>
 
-          <div className="lightbox-info-pane">
-            <CatBadge category={item.category} />
-            <h2 className="font-orbitron" style={{ fontWeight:900, color:'#fff', fontSize:'clamp(13px,2vw,16px)', letterSpacing:'0.08em', lineHeight:1.35 }}>{item.title}</h2>
-            <p className="font-rajdhani" style={{ fontSize:14, color:'#8099b8', lineHeight:1.7 }}>{item.description}</p>
-            <div style={{ borderTop:'1px solid #1a2d47', paddingTop:16, display:'flex', flexDirection:'column', gap:10 }}>
-              {[['Record ID', `FL-${String(item.id).padStart(3,'0')}`], ['Category', item.category], ['Status', 'Archived'], ['Access', 'Public']].map(([k, v]) => (
-                <div key={k} style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-                  <span className="font-mono-fl" style={{ fontSize:8, letterSpacing:'2px', color:'#4a6080', textTransform:'uppercase' }}>{k}</span>
-                  <span className="font-mono-fl" style={{ fontSize:9, color:'#7fb3ff' }}>{v}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+        
         </div>
       </div>
     </div>
@@ -367,9 +356,9 @@ function FeaturedSection({ onOpen }) {
                   <span className="font-mono-fl" style={{ fontSize:8, letterSpacing:'2px', padding:'4px 10px', border:`1px solid ${item.accent}66`, background:`${item.accent}18`, color:item.accent, textTransform:'uppercase' }}>{item.tag}</span>
                 </div>
               </div>
-              <div style={{ padding:'16px' }}>
-                <h3 className="font-orbitron" style={{ fontWeight:900, color:'#fff', fontSize:14, letterSpacing:'0.08em', marginBottom:8, lineHeight:1.3 }}>{item.title}</h3>
-                <p className="font-rajdhani" style={{ fontSize:13, color:'#8099b8', lineHeight:1.6 }}>{item.description.substring(0, 100)}...</p>
+              <div >
+                {/* <h3 className="font-orbitron" style={{ fontWeight:900, color:'#fff', fontSize:14, letterSpacing:'0.08em', marginBottom:8, lineHeight:1.3 }}>{item.title}</h3> */}
+                {/* <p className="font-rajdhani" style={{ fontSize:13, color:'#8099b8', lineHeight:1.6 }}>{item.description.substring(0, 100)}...</p> */}
               </div>
             </div>
           ))}
@@ -402,14 +391,18 @@ function CtaSection() {
         </p>
 
         <div className="reveal cta-btns" style={{ transitionDelay:'0.25s' }}>
+          <Link href="/careers">
           <button className="btn-primary btn-glow">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
             Join Workshop
-          </button>
+          </button></Link>
+          <Link href="/contact">
+          
           <button className="btn-outline-fl">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Contact Us
           </button>
+          </Link>
         </div>
       </div>
     </section>

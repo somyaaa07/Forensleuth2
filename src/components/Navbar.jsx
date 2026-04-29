@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -25,15 +26,35 @@ const burgerLinks = [
   { label: 'Gallery', href: '/gallery', icon: '◫' },
 ]
 
+// ── Helper: pathname se active link label detect karo ──
+function getActiveLabelFromPath(pathname) {
+  if (pathname === '/') return 'Home'
+  // Services aur uske sub-routes dono match karo
+  if (pathname.startsWith('/services')) return 'Services'
+  // Baaki nav links ke liye exact ya startsWith match
+  for (const link of navLinks) {
+    if (link.href !== '/' && pathname.startsWith(link.href)) return link.label
+  }
+  // Burger links
+  for (const link of burgerLinks) {
+    if (pathname.startsWith(link.href)) return link.label
+  }
+  return ''
+}
+
 export default function Navbar() {
+  const pathname = usePathname()
+
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [activeLink, setActiveLink] = useState('Home')
   const [servicesOpen, setServicesOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const dropdownRef = useRef(null)
   const burgerRef = useRef(null)
+
+  // ── Active link: always derived from pathname ──
+  const activeLink = getActiveLabelFromPath(pathname)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -55,12 +76,19 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
-  const handleHashScroll = (href, label) => {
+  // Route change hone par menus band karo
+  useEffect(() => {
     setMenuOpen(false)
     setMobileOpen(false)
     setServicesOpen(false)
     setMobileServicesOpen(false)
-    if (label) setActiveLink(label)
+  }, [pathname])
+
+  const handleHashScroll = (href) => {
+    setMenuOpen(false)
+    setMobileOpen(false)
+    setServicesOpen(false)
+    setMobileServicesOpen(false)
     const hash = href.includes('#') ? href.split('#')[1] : null
     if (hash) {
       const el = document.getElementById(hash)
@@ -277,7 +305,7 @@ export default function Navbar() {
         <div className="nav-inner">
 
           {/* ── Logo ── */}
-          <Link href="/" onClick={() => setActiveLink('Home')} style={{ textDecoration: 'none', flexShrink: 0 }}>
+          <Link href="/" style={{ textDecoration: 'none', flexShrink: 0 }}>
             <motion.div
               whileHover={{ scale: 1.04 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
@@ -346,7 +374,7 @@ export default function Navbar() {
                       >
                         <div style={{ padding: '10px 18px 8px', fontFamily: 'Orbitron', fontSize: 9, letterSpacing: 3, color: 'rgba(32,126,255,0.45)', borderBottom: '1px solid rgba(32,126,255,0.08)' }}>OUR_SERVICES</div>
                         {servicesDropdown.map((item, idx) => (
-                          <Link key={item.label} href={item.href} onClick={() => { setServicesOpen(false); setActiveLink('Services') }} style={{ textDecoration: 'none' }}>
+                          <Link key={item.label} href={item.href} onClick={() => setServicesOpen(false)} style={{ textDecoration: 'none' }}>
                             <motion.div
                               className="dropdown-item"
                               initial={{ opacity: 0, x: -10 }}
@@ -371,7 +399,7 @@ export default function Navbar() {
                   </AnimatePresence>
                 </div>
               ) : (
-                <Link key={link.label} href={link.href} onClick={() => handleHashScroll(link.href, link.label)} style={{ textDecoration: 'none' }}>
+                <Link key={link.label} href={link.href} onClick={() => handleHashScroll(link.href)} style={{ textDecoration: 'none' }}>
                   <motion.span
                     className="nav-link-item"
                     initial={{ opacity: 0, y: -10 }}
@@ -438,7 +466,7 @@ export default function Navbar() {
                   >
                     <div style={{ padding: '10px 18px 8px', fontFamily: 'Orbitron', fontSize: 9, letterSpacing: 3, color: 'rgba(32,126,255,0.45)', borderBottom: '1px solid rgba(32,126,255,0.08)' }}>MORE_SECTIONS</div>
                     {burgerLinks.map((link, i) => (
-                      <Link key={link.label} href={link.href} onClick={() => handleHashScroll(link.href, link.label)} style={{ textDecoration: 'none' }}>
+                      <Link key={link.label} href={link.href} onClick={() => handleHashScroll(link.href)} style={{ textDecoration: 'none' }}>
                         <motion.div
                           className="dropdown-item"
                           initial={{ opacity: 0, x: -10 }}
@@ -464,7 +492,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop CTA */}
-            <Link href="/carrier" onClick={() => handleHashScroll('/contact', 'Contact')} style={{ textDecoration: 'none' }}>
+            <Link href="/careers" style={{ textDecoration: 'none' }}>
               <motion.button
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -481,7 +509,7 @@ export default function Navbar() {
                   position: 'relative', overflow: 'hidden', whiteSpace: 'nowrap',
                 }}
               >
-                <span style={{ position: 'relative', zIndex: 1 }}>Carrier</span>
+                <span style={{ position: 'relative', zIndex: 1 }}>Careers</span>
               </motion.button>
             </Link>
           </div>
@@ -490,7 +518,7 @@ export default function Navbar() {
           <div className="nav-mobile-btn" style={{ alignItems: 'center', gap: 10, flexShrink: 0 }}>
             {/* Tablet-only CTA */}
             <Link
-              href="/#contact"
+              href="/careers"
               onClick={() => setMobileOpen(false)}
               className="tablet-cta"
               style={{
@@ -503,10 +531,10 @@ export default function Navbar() {
                 whiteSpace: 'nowrap',
               }}
             >
-              Initiate
+              Careers
             </Link>
 
-            {/* Hamburger — fixed 40×40 touch target */}
+            {/* Hamburger */}
             <button
               className={`mobile-hamburger${mobileOpen ? ' is-open' : ''}`}
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -554,7 +582,7 @@ export default function Navbar() {
                           }}
                           className="mobile-nav-link"
                         >
-                          <span style={{ color: 'rgba(180,200,220,0.85)' }}>{link.label}</span>
+                          <span style={{ color: activeLink === link.label ? '#207eff' : 'rgba(180,200,220,0.85)' }}>{link.label}</span>
                           <motion.span
                             animate={{ rotate: mobileServicesOpen ? 90 : 0 }}
                             transition={{ duration: 0.25 }}
@@ -587,7 +615,8 @@ export default function Navbar() {
                                         alignItems: 'center', gap: 12,
                                         padding: '13px 0',
                                         fontFamily: 'Orbitron', fontSize: 11, letterSpacing: 2,
-                                        color: 'rgba(140,170,210,0.7)', textTransform: 'uppercase',
+                                        color: pathname === item.href ? '#207eff' : 'rgba(140,170,210,0.7)',
+                                        textTransform: 'uppercase',
                                         borderBottom: '1px solid rgba(26,45,71,0.3)',
                                       }}
                                     >
@@ -604,7 +633,7 @@ export default function Navbar() {
                     ) : (
                       <Link
                         href={link.href}
-                        onClick={() => handleHashScroll(link.href, link.label)}
+                        onClick={() => handleHashScroll(link.href)}
                         className="mobile-nav-link"
                         style={{ color: activeLink === link.label ? '#207eff' : 'rgba(180,200,220,0.85)' }}
                       >
@@ -624,13 +653,13 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      onClick={() => handleHashScroll(link.href, link.label)}
+                      onClick={() => handleHashScroll(link.href)}
                       style={{
                         textDecoration: 'none', display: 'flex',
                         alignItems: 'center', gap: 12,
                         fontFamily: 'Orbitron', fontSize: 12, letterSpacing: 2.5,
                         textTransform: 'uppercase',
-                        color: 'rgba(140,170,210,0.7)',
+                        color: activeLink === link.label ? '#207eff' : 'rgba(140,170,210,0.7)',
                         padding: '16px 0',
                         borderBottom: '1px solid rgba(26,45,71,0.3)',
                       }}
@@ -650,11 +679,11 @@ export default function Navbar() {
                 style={{ marginTop: 'auto', paddingTop: 40 }}
               >
                 <Link
-                  href="/#contact"
+                  href="/careers"
                   onClick={() => setMobileOpen(false)}
                   className="mobile-cta-btn"
                 >
-                  Initiate Investigation
+                  Careers
                 </Link>
                 <div style={{ marginTop: 24, height: 1, background: 'linear-gradient(90deg, transparent, rgba(32,126,255,0.3), transparent)' }} />
               </motion.div>
