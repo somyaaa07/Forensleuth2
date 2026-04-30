@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link';
+import { FaLinkedinIn, FaWhatsapp, FaTelegram, FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
 
@@ -25,11 +26,10 @@ export default function Footer() {
     {
       title: 'USEFUL LINKS',
       links: [
-          {label:'Services', href:'/services'},
+        { label: 'Services', href: '/services' },
         { label: 'Gallery', href: '/gallery' },
         { label: 'Contact', href: '/contact' },
-        {label: 'Broucher', href: '/broucher' },
-      
+        { label: 'Broucher', href: '/broucher' },
       ],
     },
   ];
@@ -37,25 +37,25 @@ export default function Footer() {
   const socials = [
     {
       id: 'linkedin',
-      label: 'LI',
+      icon: <FaLinkedinIn size={16} />,
       href: 'https://www.linkedin.com/company/forensleuth/',
       title: 'Connect on LinkedIn',
     },
     {
       id: 'whatsapp',
-      label: 'WA',
+      icon: <FaWhatsapp size={16} />,
       href: 'https://chat.whatsapp.com/EoYB1SWtEzi0pDLbWgeKDy',
       title: 'Join on WhatsApp',
     },
     {
       id: 'telegram',
-      label: 'TG',
+      icon: <FaTelegram size={16} />,
       href: 'https://t.me/forensleuth',
       title: 'Join on Telegram',
     },
     {
       id: 'instagram',
-      label: 'IG',
+      icon: <FaInstagram size={16} />,
       href: 'https://www.instagram.com/forensleuth',
       title: 'Follow on Instagram',
     },
@@ -85,9 +85,6 @@ export default function Footer() {
           display: flex;
           align-items: center;
           justify-content: center;
-          font-family: 'Orbitron', sans-serif;
-          font-size: 9px;
-          font-weight: 700;
           color: #8099b8;
           text-decoration: none;
           transition: all 0.2s;
@@ -163,7 +160,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {item.label}
+                    {item.icon}
                   </Link>
                 )
               ))}

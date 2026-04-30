@@ -76,7 +76,7 @@ export default function Gallery() {
         @media (max-width: 540px) {
           .gallery-grid {
             grid-template-columns: 1fr;
-            grid-template-rows: repeat(6, 180px);
+            grid-template-rows: repeat(6, clamp(220px, 55vw, 320px));
           }
           .gallery-tile-span2 {
             grid-column: span 1 !important;
@@ -149,8 +149,6 @@ export default function Gallery() {
             <GalleryTile item={gallery[5]} i={5} hov={hov} setHov={setHov} extraClass="gallery-tile-span2" />
           </div>
         </div>
-
-   
 
       </div>
     </section>

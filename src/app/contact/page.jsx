@@ -93,9 +93,9 @@ function CornerBrackets({ size=24, blue='#207eff', orange='#fa5330' }) {
 const INFO_CARDS = [
   { label: 'Our Location', tag: 'HQ::INDIA', value: 'Greater Noida', accent: '#207eff', variant: '',
     icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> },
-  { label: 'Email Address', tag: 'SECURE::CHANNEL', value: ' forensleuth@gmail.com', subvalue: 'info@forensleuth.com', accent: '#fa5330', variant: 'info-card-orange',
+  { label: 'Email Address', tag: 'SECURE::CHANNEL', value: ' forensleuth@gmail.com , info@forensleuth.com', accent: '#fa5330', variant: 'info-card-orange',
     icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> },
-  { label: 'Phone / WhatsApp', tag: 'DIRECT::LINE', value: '+91 9818194316', subvalue: '+91 7840010208', accent: '#207eff', variant: '',
+  { label: 'Phone / WhatsApp', tag: 'DIRECT::LINE', value: '+91 7840010208', subvalue: '+91 9818194316', accent: '#207eff', variant: '',
     icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg> },
   { label: 'Working Hours', tag: 'SCHEDULE::OPS', value: '24*7', subvalue: 'Emergency: 24 × 7', accent: '#fa5330', variant: 'info-card-orange',
     icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> },

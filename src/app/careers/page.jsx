@@ -66,7 +66,6 @@ const requiredStar = {
 };
 
 function InputField({ label, type = "text", value, onChange, placeholder }) {
-  const [focused, setFocused] = useState(false);
   return (
     <div style={{ marginBottom: "1.5rem" }}>
       <label style={labelStyle}>
@@ -79,12 +78,10 @@ function InputField({ label, type = "text", value, onChange, placeholder }) {
         onChange={onChange}
         placeholder={placeholder || "Your answer"}
         onFocus={(e) => {
-          setFocused(true);
           e.target.style.borderColor = "#207eff";
           e.target.style.boxShadow = "0 0 0 3px #207eff18";
         }}
         onBlur={(e) => {
-          setFocused(false);
           e.target.style.borderColor = "#1e3a5f";
           e.target.style.boxShadow = "none";
         }}
@@ -236,13 +233,16 @@ function FileUpload({ label, file, onChange }) {
         >
           <Upload size={16} color="#207eff" />
         </div>
-        <div>
+        <div style={{ flex: 1, minWidth: 0 }}>
           <p
             style={{
               fontFamily: "'Rajdhani', sans-serif",
               fontSize: "14px",
               color: file ? "#e8edf5" : "#4d6080",
               margin: 0,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
             }}
           >
             {file ? file.name : "Click to add file"}
@@ -272,6 +272,7 @@ function FileUpload({ label, file, onChange }) {
               cursor: "pointer",
               color: "#4d6080",
               padding: 0,
+              flexShrink: 0,
             }}
           >
             <X size={16} />
@@ -340,11 +341,11 @@ export default function CareerPage() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "2rem",
+            padding: "2rem 1rem",
             marginTop: "4rem",
           }}
         >
-          <div style={{ textAlign: "center", maxWidth: "480px" }}>
+          <div style={{ textAlign: "center", maxWidth: "480px", width: "100%" }}>
             <div
               style={{
                 width: "72px",
@@ -363,7 +364,7 @@ export default function CareerPage() {
             <h1
               style={{
                 fontFamily: "'Orbitron', sans-serif",
-                fontSize: "1.8rem",
+                fontSize: "clamp(1.4rem, 5vw, 1.8rem)",
                 fontWeight: 900,
                 color: "#e8edf5",
                 marginBottom: "1rem",
@@ -378,6 +379,7 @@ export default function CareerPage() {
                 color: "#6b7fa3",
                 lineHeight: 1.7,
                 marginBottom: "2rem",
+                padding: "0 1rem",
               }}
             >
               Thank you for applying to ForenSleuth. We will review your
@@ -419,6 +421,7 @@ export default function CareerPage() {
     <div>
       <Navbar />
       <main
+        className="career-main"
         style={{
           minHeight: "100vh",
           backgroundColor: "#080f1a",
@@ -428,12 +431,20 @@ export default function CareerPage() {
       >
         {/* Hero */}
         <div
+          className="career-hero"
           style={{
-            padding: "5rem 1.5rem 3rem",
+            padding: "4rem 1.5rem 3rem",
             borderBottom: "1px solid #ffffff0d",
           }}
         >
-          <div className="mx-auto max-w-7xl" style={{ paddingLeft: "9rem", paddingRight: "2rem" }}>
+          <div
+            className="career-hero-inner"
+            style={{
+              maxWidth: "1280px",
+              margin: "0 auto",
+              width: "100%",
+            }}
+          >
             <p
               style={{
                 fontFamily: "'Share Tech Mono', monospace",
@@ -449,42 +460,47 @@ export default function CareerPage() {
             <h1
               style={{
                 fontFamily: "'Orbitron', sans-serif",
-                fontSize: "clamp(2rem, 5vw, 3.2rem)",
+                fontSize: "clamp(1.6rem, 4vw, 3.2rem)",
                 fontWeight: 900,
                 lineHeight: 1.1,
                 marginBottom: "1rem",
                 color: "#e8edf5",
                 textShadow: "0 0 30px rgba(32, 126, 255, 0.3)",
                 letterSpacing: "0.02em",
-                maxWidth: "80rem",
               }}
             >
-              ForenSleuth Careers & <span style={{ color: "#207eff" }}>Opportunities</span>
+              ForenSleuth Careers &{" "}
+              <span style={{ color: "#207eff" }}>Opportunities</span>
             </h1>
             <p
               style={{
                 fontFamily: "'Rajdhani', sans-serif",
-                fontSize: "16px",
+                fontSize: "clamp(14px, 2.5vw, 16px)",
                 color: "#6b7fa3",
-                maxWidth: "1260px",
+                maxWidth: "860px",
                 lineHeight: 1.7,
-                marginBottom: "1.5rem",
+                marginBottom: "1rem",
               }}
             >
-              Explore opportunities to work with us across forensic science, tech, content, and more.
-              Choose your role and contribute on a voluntary, temporary, or permanent basis.
+              Explore opportunities to work with us across forensic science,
+              tech, content, and more. Choose your role and contribute on a
+              voluntary, temporary, or permanent basis.
             </p>
-              <p
+            <p
               style={{
                 fontFamily: "'Rajdhani', sans-serif",
-                fontSize: "16px",
+                fontSize: "clamp(14px, 2.5vw, 16px)",
                 color: "#6b7fa3",
-                maxWidth: "1260px",
+                maxWidth: "860px",
                 lineHeight: 1.7,
                 marginBottom: "1.5rem",
               }}
             >
-             At Forensleuth, we believe in empowering talent, encouraging innovation, and creating opportunities for future forensic professionals. Whether you are a student, researcher, or experienced professional, we provide a platform to grow, learn, and make an impact.
+              At Forensleuth, we believe in empowering talent, encouraging
+              innovation, and creating opportunities for future forensic
+              professionals. Whether you are a student, researcher, or
+              experienced professional, we provide a platform to grow, learn,
+              and make an impact.
             </p>
             <hr
               style={{
@@ -497,321 +513,339 @@ export default function CareerPage() {
           </div>
         </div>
 
-        {/* Form */}
-        <div style={{ padding: "1rem 1.5rem" }}>
+        {/* Form Section */}
+        <div
+          className="career-form-section"
+          style={{ padding: "2rem 1rem" }}
+        >
           <div
-            className="mx-auto max-w-7xl"
-            style={{ display: "grid", gridTemplateColumns: "1fr min(600px, 100%)", gap: "4rem", alignItems: "start" }}
+            style={{
+              maxWidth: "950px",
+              margin: "0 auto",
+              width: "100%",
+            }}
           >
-            {/* Left info panel */}
-            <div style={{ display: "none" }} className="lg-info-panel" />
-
-            {/* Form card */}
             <div
+              className="career-form-card"
               style={{
-                gridColumn: "1 / -1",
-           maxWidth: "950px",
-                margin: "0 auto",
-                width: "100%",
+                background: "#0a1628",
+                border: "1px solid #1e3a5f",
+                borderRadius: "20px",
+                padding: "2.5rem",
+                position: "relative",
+                overflow: "hidden",
               }}
             >
+              {/* Top accent line */}
               <div
                 style={{
-                  background: "#0a1628",
-                  border: "1px solid #1e3a5f",
-                  borderRadius: "20px",
-                  padding: "2.5rem",
-                  position: "relative",
-                  overflow: "hidden",
+                  position: "absolute",
+                  top: 0,
+                  left: "10%",
+                  right: "10%",
+                  height: "1px",
+                  background:
+                    "linear-gradient(90deg, transparent, #207eff88, transparent)",
+                }}
+              />
+
+              <h2
+                style={{
+                  fontFamily: "'Orbitron', sans-serif",
+                  fontSize: "clamp(0.9rem, 3vw, 1.1rem)",
+                  fontWeight: 700,
+                  color: "#e8edf5",
+                  letterSpacing: "0.05em",
+                  marginBottom: "0.4rem",
                 }}
               >
-                {/* Top accent line */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: "10%",
-                    right: "10%",
-                    height: "1px",
-                    background: "linear-gradient(90deg, transparent, #207eff88, transparent)",
-                  }}
+                Application Form
+              </h2>
+              <p
+                style={{
+                  fontFamily: "'Rajdhani', sans-serif",
+                  fontSize: "13px",
+                  color: "#4d6080",
+                  marginBottom: "2rem",
+                }}
+              >
+                Fields marked with{" "}
+                <span style={{ color: "#fa5330" }}>*</span> are required.
+              </p>
+
+              <form onSubmit={handleSubmit}>
+                {/* Name */}
+                <InputField
+                  label="Name"
+                  value={form.name}
+                  onChange={set("name")}
+                  placeholder="Full name"
                 />
 
-                <h2
-                  style={{
-                    fontFamily: "'Orbitron', sans-serif",
-                    fontSize: "1.1rem",
-                    fontWeight: 700,
-                    color: "#e8edf5",
-                    letterSpacing: "0.05em",
-                    marginBottom: "0.4rem",
-                  }}
-                >
-                  Application Form
-                </h2>
-                <p
-                  style={{
-                    fontFamily: "'Rajdhani', sans-serif",
-                    fontSize: "13px",
-                    color: "#4d6080",
-                    marginBottom: "2rem",
-                  }}
-                >
-                  Fields marked with <span style={{ color: "#fa5330" }}>*</span> are required.
-                </p>
-
-                <form onSubmit={handleSubmit}>
-                  {/* Name */}
-                  <InputField
-                    label="Name"
-                    value={form.name}
-                    onChange={set("name")}
-                    placeholder="Full name"
+                {/* Date of Birth */}
+                <div style={{ marginBottom: "1.5rem" }}>
+                  <label style={labelStyle}>
+                    Date of Birth<span style={requiredStar}>*</span>
+                  </label>
+                  <input
+                    type="date"
+                    value={form.dob}
+                    onChange={set("dob")}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#207eff";
+                      e.target.style.boxShadow = "0 0 0 3px #207eff18";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#1e3a5f";
+                      e.target.style.boxShadow = "none";
+                    }}
+                    style={{
+                      ...inputStyle,
+                      colorScheme: "dark",
+                    }}
                   />
+                </div>
 
-                  {/* Date of Birth */}
-                  <div style={{ marginBottom: "1.5rem" }}>
-                    <label style={labelStyle}>
-                      Date of Birth<span style={requiredStar}>*</span>
-                    </label>
-                    <input
-                      type="date"
-                      value={form.dob}
-                      onChange={set("dob")}
-                      onFocus={(e) => {
-                        e.target.style.borderColor = "#207eff";
-                        e.target.style.boxShadow = "0 0 0 3px #207eff18";
-                      }}
-                      onBlur={(e) => {
-                        e.target.style.borderColor = "#1e3a5f";
-                        e.target.style.boxShadow = "none";
-                      }}
+                {/* Email */}
+                <InputField
+                  label="Email"
+                  type="email"
+                  value={form.email}
+                  onChange={set("email")}
+                  placeholder="your@email.com"
+                />
+
+                {/* Phone */}
+                <InputField
+                  label="Phone Number"
+                  type="tel"
+                  value={form.phone}
+                  onChange={set("phone")}
+                  placeholder="+91 XXXXX XXXXX"
+                />
+
+                {/* Current Location */}
+                <InputField
+                  label="Current Location"
+                  value={form.location}
+                  onChange={set("location")}
+                  placeholder="City, State"
+                />
+
+                {/* Qualification */}
+                <RadioGroup
+                  label="Qualification"
+                  options={QUALIFICATIONS}
+                  value={form.qualification}
+                  onChange={(v) =>
+                    setForm((f) => ({ ...f, qualification: v }))
+                  }
+                />
+
+                {/* Field of Study */}
+                <InputField
+                  label="Field of Study"
+                  value={form.fieldOfStudy}
+                  onChange={set("fieldOfStudy")}
+                  placeholder="e.g. Forensic Science..."
+                />
+
+                {/* Role */}
+                <RadioGroup
+                  label="Which Role are you interested in?"
+                  options={ROLES}
+                  value={form.role}
+                  onChange={(v) => setForm((f) => ({ ...f, role: v }))}
+                />
+
+                {/* Key Skills */}
+                <TextAreaField
+                  label="Key Skills (Mention your relevant skills)"
+                  value={form.keySkills}
+                  onChange={set("keySkills")}
+                  placeholder="e.g. Investigation Forensics..."
+                />
+
+                {/* Preferred Work Type */}
+                <RadioGroup
+                  label="Preferred Work Type"
+                  options={WORK_TYPES}
+                  value={form.workType}
+                  onChange={(v) => setForm((f) => ({ ...f, workType: v }))}
+                />
+
+                {/* Experience */}
+                <TextAreaField
+                  label="Experience (If any)"
+                  value={form.experience}
+                  onChange={set("experience")}
+                  placeholder="Briefly describe your relevant experience..."
+                />
+
+                {/* Photo Upload */}
+                <FileUpload
+                  label="Photo"
+                  file={form.photo}
+                  onChange={(f) =>
+                    setForm((prev) => ({ ...prev, photo: f }))
+                  }
+                />
+
+                {/* Resume Upload */}
+                <FileUpload
+                  label="Resume"
+                  file={form.resume}
+                  onChange={(f) =>
+                    setForm((prev) => ({ ...prev, resume: f }))
+                  }
+                />
+
+                {/* Declaration */}
+                <div style={{ marginBottom: "2rem" }}>
+                  <label
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: "12px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <div
+                      onClick={() =>
+                        setForm((f) => ({
+                          ...f,
+                          declaration: !f.declaration,
+                        }))
+                      }
                       style={{
-                        ...inputStyle,
-                        colorScheme: "dark",
-                      }}
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <InputField
-                    label="Email"
-                    type="email"
-                    value={form.email}
-                    onChange={set("email")}
-                    placeholder="your@email.com"
-                  />
-
-                  {/* Phone */}
-                  <InputField
-                    label="Phone Number"
-                    type="tel"
-                    value={form.phone}
-                    onChange={set("phone")}
-                    placeholder="+91 XXXXX XXXXX"
-                  />
-
-                  {/* Current Location */}
-                  <InputField
-                    label="Current Location"
-                    value={form.location}
-                    onChange={set("location")}
-                    placeholder="City, State"
-                  />
-
-                  {/* Qualification */}
-                  <RadioGroup
-                    label="Qualification"
-                    options={QUALIFICATIONS}
-                    value={form.qualification}
-                    onChange={(v) => setForm((f) => ({ ...f, qualification: v }))}
-                  />
-
-                  {/* Field of Study */}
-                  <InputField
-                    label="Field of Study"
-                    value={form.fieldOfStudy}
-                    onChange={set("fieldOfStudy")}
-                    placeholder="e.g. Forensic Science..."
-                  />
-
-                  {/* Role */}
-                  <RadioGroup
-                    label="Which Role are you interested in?"
-                    options={ROLES}
-                    value={form.role}
-                    onChange={(v) => setForm((f) => ({ ...f, role: v }))}
-                  />
-
-                  {/* Key Skills */}
-                  <TextAreaField
-                    label="Key Skills (Mention your relevant skills)"
-                    value={form.keySkills}
-                    onChange={set("keySkills")}
-                    placeholder="e.g. Investigation Forensics..."
-                  />
-
-                  {/* Preferred Work Type */}
-                  <RadioGroup
-                    label="Preferred Work Type"
-                    options={WORK_TYPES}
-                    value={form.workType}
-                    onChange={(v) => setForm((f) => ({ ...f, workType: v }))}
-                  />
-
-                  {/* Experience */}
-                  <TextAreaField
-                    label="Experience (If any)"
-                    value={form.experience}
-                    onChange={set("experience")}
-                    placeholder="Briefly describe your relevant experience..."
-                  />
-
-                  {/* Photo Upload */}
-                  <FileUpload
-                    label="Photo"
-                    file={form.photo}
-                    onChange={(f) => setForm((prev) => ({ ...prev, photo: f }))}
-                  />
-
-                  {/* Resume Upload */}
-                  <FileUpload
-                    label="Resume"
-                    file={form.resume}
-                    onChange={(f) => setForm((prev) => ({ ...prev, resume: f }))}
-                  />
-
-                  {/* Declaration */}
-                  <div style={{ marginBottom: "2rem" }}>
-                    <label
-                      style={{
+                        width: "20px",
+                        height: "20px",
+                        minWidth: "20px",
+                        borderRadius: "5px",
+                        border: `2px solid ${
+                          form.declaration ? "#207eff" : "#1e3a5f"
+                        }`,
+                        background: form.declaration
+                          ? "#207eff22"
+                          : "transparent",
                         display: "flex",
-                        alignItems: "flex-start",
-                        gap: "12px",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        marginTop: "2px",
+                        transition: "all 0.15s",
                         cursor: "pointer",
                       }}
                     >
-                      <div
-                        onClick={() =>
-                          setForm((f) => ({ ...f, declaration: !f.declaration }))
-                        }
-                        style={{
-                          width: "20px",
-                          height: "20px",
-                          borderRadius: "5px",
-                          border: `2px solid ${form.declaration ? "#207eff" : "#1e3a5f"}`,
-                          background: form.declaration ? "#207eff22" : "transparent",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexShrink: 0,
-                          marginTop: "2px",
-                          transition: "all 0.15s",
-                          cursor: "pointer",
-                        }}
-                      >
-                        {form.declaration && (
-                          <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
-                            <path
-                              d="M1 4L4 7L10 1"
-                              stroke="#207eff"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        )}
-                      </div>
-                      <span
-                        style={{
-                          fontFamily: "'Rajdhani', sans-serif",
-                          fontSize: "14px",
-                          color: "#6b7fa3",
-                          lineHeight: 1.6,
-                        }}
-                      >
-                        I confirm that the information provided is accurate and I am willing to contribute
-                        as per the selected role.
-                      </span>
-                    </label>
-                  </div>
-
-                  {/* Submit */}
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    style={{
-                      width: "100%",
-                      padding: "14px 0",
-                      borderRadius: "10px",
-                      border: "1px solid #207eff55",
-                      background: loading ? "#207eff18" : "transparent",
-                      color: "#207eff",
-                      fontFamily: "'Rajdhani', sans-serif",
-                      fontSize: "14px",
-                      fontWeight: 700,
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      cursor: loading ? "not-allowed" : "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "10px",
-                      transition: "background 0.15s, transform 0.1s",
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!loading) e.currentTarget.style.background = "#207eff18";
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!loading) e.currentTarget.style.background = "transparent";
-                    }}
-                    onMouseDown={(e) => {
-                      if (!loading) e.currentTarget.style.transform = "scale(0.98)";
-                    }}
-                    onMouseUp={(e) => {
-                      e.currentTarget.style.transform = "scale(1)";
-                    }}
-                  >
-                    {loading ? (
-                      <>
+                      {form.declaration && (
                         <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
+                          width="11"
+                          height="9"
+                          viewBox="0 0 11 9"
                           fill="none"
-                          stroke="#207eff"
-                          strokeWidth="2"
-                          style={{
-                            animation: "spin 1s linear infinite",
-                          }}
                         >
-                          <circle cx="12" cy="12" r="10" strokeOpacity="0.3" />
-                          <path d="M12 2a10 10 0 0 1 10 10" />
+                          <path
+                            d="M1 4L4 7L10 1"
+                            stroke="#207eff"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
                         </svg>
-                        Submitting...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={15} />
-                        Submit Application
-                      </>
-                    )}
-                  </button>
+                      )}
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: "'Rajdhani', sans-serif",
+                        fontSize: "14px",
+                        color: "#6b7fa3",
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      I confirm that the information provided is accurate and I
+                      am willing to contribute as per the selected role.
+                    </span>
+                  </label>
+                </div>
 
-                  <p
-                    style={{
-                      fontFamily: "'Share Tech Mono', monospace",
-                      fontSize: "10px",
-                      color: "#2a3a55",
-                      textAlign: "center",
-                      marginTop: "1.25rem",
-                      letterSpacing: "0.1em",
-                    }}
-                  >
-                    YOUR_DATA_IS_SAFE &nbsp;•&nbsp; NO_SPAM &nbsp;•&nbsp; FORENSLEUTH_CAREERS
-                  </p>
-                </form>
-              </div>
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  style={{
+                    width: "100%",
+                    padding: "14px 0",
+                    borderRadius: "10px",
+                    border: "1px solid #207eff55",
+                    background: loading ? "#207eff18" : "transparent",
+                    color: "#207eff",
+                    fontFamily: "'Rajdhani', sans-serif",
+                    fontSize: "14px",
+                    fontWeight: 700,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    cursor: loading ? "not-allowed" : "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "10px",
+                    transition: "background 0.15s, transform 0.1s",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!loading)
+                      e.currentTarget.style.background = "#207eff18";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!loading)
+                      e.currentTarget.style.background = "transparent";
+                  }}
+                  onMouseDown={(e) => {
+                    if (!loading)
+                      e.currentTarget.style.transform = "scale(0.98)";
+                  }}
+                  onMouseUp={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                >
+                  {loading ? (
+                    <>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#207eff"
+                        strokeWidth="2"
+                        style={{ animation: "spin 1s linear infinite" }}
+                      >
+                        <circle cx="12" cy="12" r="10" strokeOpacity="0.3" />
+                        <path d="M12 2a10 10 0 0 1 10 10" />
+                      </svg>
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={15} />
+                      Submit Application
+                    </>
+                  )}
+                </button>
+
+                <p
+                  style={{
+                    fontFamily: "'Share Tech Mono', monospace",
+                    fontSize: "10px",
+                    color: "#2a3a55",
+                    textAlign: "center",
+                    marginTop: "1.25rem",
+                    letterSpacing: "0.1em",
+                    wordBreak: "break-word",
+                  }}
+                >
+                  YOUR_DATA_IS_SAFE &nbsp;•&nbsp; NO_SPAM &nbsp;•&nbsp;
+                  FORENSLEUTH_CAREERS
+                </p>
+              </form>
             </div>
           </div>
         </div>
@@ -822,9 +856,73 @@ export default function CareerPage() {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
+
         input[type="date"]::-webkit-calendar-picker-indicator {
           filter: invert(0.4) sepia(1) saturate(5) hue-rotate(190deg);
           cursor: pointer;
+        }
+
+        /* ── Tablet (≤ 1024px) ── */
+        @media (max-width: 1024px) {
+          .career-hero {
+            padding: 3.5rem 2rem 2.5rem !important;
+          }
+        }
+
+        /* ── Small tablet / large mobile (≤ 768px) ── */
+        @media (max-width: 768px) {
+          .career-hero {
+            padding: 2.5rem 1.25rem 2rem !important;
+          }
+
+          .career-form-section {
+            padding: 1.5rem 1rem !important;
+          }
+
+          .career-form-card {
+            padding: 1.75rem 1.25rem !important;
+            border-radius: 14px !important;
+          }
+        }
+
+        /* ── Mobile (≤ 480px) ── */
+        @media (max-width: 480px) {
+          .career-hero {
+            padding: 2rem 1rem 1.75rem !important;
+          }
+
+          .career-form-section {
+            padding: 1rem 0.75rem !important;
+          }
+
+          .career-form-card {
+            padding: 1.25rem 1rem !important;
+            border-radius: 12px !important;
+          }
+        }
+
+        /* ── Extra small (≤ 360px) ── */
+        @media (max-width: 360px) {
+          .career-form-section {
+            padding: 0.75rem 0.5rem !important;
+          }
+
+          .career-form-card {
+            padding: 1rem 0.875rem !important;
+          }
+        }
+
+        /* Ensure all inputs never overflow on any screen */
+        input, textarea, select {
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+
+        /* Touch-friendly tap targets on mobile */
+        @media (max-width: 768px) {
+          input, textarea {
+            font-size: 16px !important; /* Prevents iOS zoom on focus */
+          }
         }
       `}</style>
 
