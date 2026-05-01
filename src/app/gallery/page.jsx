@@ -457,4 +457,4 @@ export default function GalleryPage() {
       )}
     </>
   )
-}
+}  

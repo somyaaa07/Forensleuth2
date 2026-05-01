@@ -76,7 +76,7 @@ export default function Gallery() {
         @media (max-width: 540px) {
           .gallery-grid {
             grid-template-columns: 1fr;
-            grid-template-rows: repeat(6, 260px);
+            grid-template-rows: repeat(6, clamp(220px, 55vw, 320px));
           }
           .gallery-tile-span2 {
             grid-column: span 1 !important;
