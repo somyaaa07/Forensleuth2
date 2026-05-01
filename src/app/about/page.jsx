@@ -467,7 +467,7 @@ function AboutCompany() {
               ))}
             </div>
             <div className="stats-row">
-              {[['500+','Cases Handled'],['12+','Expert Faculty'],['8+','Service Areas']].map(([n,l]) => (
+              {[['500+','Cases Handled'],['8+','Service Areas']].map(([n,l]) => (
                 <div key={l}>
                   <div className="font-orbitron" style={{ fontWeight:900, fontSize:'clamp(24px,3.5vw,30px)', color:'#207eff', textShadow:'0 0 20px rgba(32,126,255,.5)', lineHeight:1 }}>{n}</div>
                   <div className="font-mono-fl" style={{ fontSize:9, letterSpacing:'2px', color:'#8099b8', marginTop:4, textTransform:'uppercase' }}>{l}</div>

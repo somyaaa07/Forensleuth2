@@ -204,7 +204,7 @@ function GalleryTile({ item, i, hov, setHov, extraClass = '' }) {
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0,
         padding: '32px 16px 16px',
-        background: 'linear-gradient(to top, rgba(3,6,13,0.92) 0%, transparent 100%)',
+        background: 'linear-gradient(to top, rgba(3,6,13,0.92) 0%, transparent 100%)', 
         transform: isHovered ? 'translateY(0)' : 'translateY(100%)',
         transition: 'transform 0.4s ease',
       }}>

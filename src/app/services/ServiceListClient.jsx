@@ -126,7 +126,7 @@ export default function ServicesListClient({ services = [] }) {
       <section style={{ borderTop: "1px solid #0d1a2d", padding: "48px 24px", textAlign: "center" }}>
         <div style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: "10px", letterSpacing: ".4em", color: "#207eff55", marginBottom: "12px" }}>◆ READY TO PROCEED ◆</div>
         <h2 style={{ fontFamily: "'Orbitron', monospace", fontSize: "clamp(18px,3vw,28px)", fontWeight: 900, color: "#fff", textShadow: "0 0 16px #207eff44", marginBottom: "14px" }}>
-          NEED A CUSTOM INVESTIGATION PLAN?
+          CONTACT WITH OUR TEAM NOW?
         </h2>
         <p style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "15px", color: "#9ca3af", maxWidth: "480px", margin: "0 auto 28px", lineHeight: 1.65 }}>
           Our team will assess your case and recommend the right combination of services.

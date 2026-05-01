@@ -32,7 +32,7 @@ const stats = [
   { num: '500+', label: 'Cases Solved' },
   { num: '99.8%', label: 'Accuracy' },
   { num: '24/7', label: 'Response' },
-  { num: '15+', label: 'Years' },
+  // { num: '15+', label: 'Years' },
 ]
 
 export default function Hero() {

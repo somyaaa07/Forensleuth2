@@ -358,8 +358,7 @@ export default function ServiceDetailClient({ service }) {
                 marginBottom: "16px",
               }}
             >
-              BEGIN YOUR INVESTIGATION
-            </h2>
+Get Detailed Brochure            </h2>
             <p style={{ maxWidth: "560px", margin: "0 auto 40px", fontSize: "16px", lineHeight: 1.7, color: "#9ca3af" }}>
               Our specialists are ready to assist with {service.title.toLowerCase()} cases.
               Contact us now for a confidential case assessment.
@@ -367,7 +366,7 @@ export default function ServiceDetailClient({ service }) {
 
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "14px", marginBottom: "48px" }}>
               <a
-                href="/contact"
+                href="/broucher"
                 className={isOrange ? "fs-glow-pulse-or" : "fs-glow-pulse"}
                 style={{
                   padding: "14px 32px", borderRadius: "10px",
@@ -381,25 +380,9 @@ export default function ServiceDetailClient({ service }) {
                   textDecoration: "none",
                 }}
               >
-                CONTACT US
+                View Broucher
               </a>
-              <a
-                href="/broucher"
-                style={{
-                  padding: "14px 32px", borderRadius: "10px",
-                  background: "transparent",
-                  border: `1px solid ${accent}55`,
-                  color: `${accent}cc`,
-                  fontFamily: "'Orbitron', monospace",
-                  fontSize: "12px", fontWeight: 700, letterSpacing: ".12em",
-                  textDecoration: "none",
-                  transition: "all .3s ease",
-                }}
-                onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 0 20px ${accent}33`; e.currentTarget.style.borderColor = accent; e.currentTarget.style.color = accent; }}
-                onMouseLeave={e => { e.currentTarget.style.boxShadow = "none";                  e.currentTarget.style.borderColor = `${accent}55`;    e.currentTarget.style.color = `${accent}cc`; }}
-              >
-               View Broucher
-              </a>
+           
             </div>
           </Reveal>
 

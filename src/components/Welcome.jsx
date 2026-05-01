@@ -3,10 +3,8 @@
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 const certs = [
-  { label: 'EnCE Certified', val: 'Encase' },
-  { label: 'GCFE', val: 'GIAC' },
-  { label: 'CFCE', val: 'IACIS' },
-  { label: 'ISO 17025', val: 'Accredited' },
+
+  { label: 'ISO  9001:2015', val: 'Accredited' },
 ]
 
 export default function Welcome() {
@@ -78,11 +76,7 @@ export default function Welcome() {
               </div>
             </div>
 
-            {/* "15+ yrs" badge */}
-            <div className="years-badge">
-              <div style={{ fontFamily: 'Orbitron', fontWeight: 800, fontSize: 28, color: '#207eff', textShadow: '0 0 20px rgba(32,126,255,0.5)', lineHeight: 1 }}>15+</div>
-              <div style={{ fontFamily: 'Share Tech Mono', fontSize: 9, letterSpacing: 2, color: '#8099b8', marginTop: 4 }}>YRS OPERATIONAL</div>
-            </div>
+        
 
             {/* Secondary thumbnail — hidden on mobile, shown md+ */}
             <div className="welcome-thumb">
