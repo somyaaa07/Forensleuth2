@@ -87,7 +87,7 @@ const GLOBAL_CSS = `
     background:#0a0f1c;border:1px solid #1a2d47;
     transition:all .3s cubic-bezier(.22,1,.36,1);
     box-shadow:0 4px 12px rgba(0,0,0,0.3);
-    break-inside:avoid;margin-bottom:16px;
+    break-inside:avoid;margin-bottom:20px;
   }
   .pin-card:hover { border-color:rgba(32,126,255,.6);box-shadow:0 8px 28px rgba(32,126,255,.15),0 12px 40px rgba(0,0,0,.4);transform:translateY(-4px); }
   .pin-img { width:100%;display:block;object-fit:cover;transition:transform .4s cubic-bezier(.22,1,.36,1),filter .3s ease; }
@@ -98,10 +98,10 @@ const GLOBAL_CSS = `
   .pin-card:hover .pin-overlay { opacity:1; }
   .pin-action { width:52px;height:52px;border:2px solid #207eff;background:rgba(32,126,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#207eff;transition:all .2s; }
 
-  /* Masonry */
-  .masonry-container { column-count:4;column-gap:16px; }
+  /* Masonry — CHANGE 1: column-gap badha, mobile gap bhi */
+  .masonry-container { column-count:4;column-gap:20px; }
   @media(max-width:1280px) { .masonry-container { column-count:3; } }
-  @media(max-width:768px)  { .masonry-container { column-count:2;column-gap:12px; } .pin-card { margin-bottom:12px; } }
+  @media(max-width:768px)  { .masonry-container { column-count:2;column-gap:14px; } .pin-card { margin-bottom:14px; } }
   @media(max-width:480px)  { .masonry-container { column-count:1; } }
 
   .cat-badge { font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:2px;display:inline-block; }
@@ -125,9 +125,10 @@ const GLOBAL_CSS = `
   .nav-arrow:hover { border-color:#207eff;color:#207eff;background:rgba(32,126,255,.1); }
   .nav-arrow:disabled { opacity:.25;cursor:not-allowed; }
 
+  /* CHANGE 2: featured-card img height 220px → 340px */
   .featured-card { position:relative;overflow:hidden;cursor:pointer;border:1px solid #1a2d47;background:#0a0f1c;border-radius:12px;transition:border-color .3s,box-shadow .3s,transform .3s; }
   .featured-card:hover { border-color:rgba(250,83,48,.5);box-shadow:0 0 28px rgba(250,83,48,.12),0 12px 40px rgba(0,0,0,.5);transform:translateY(-5px); }
-  .featured-card img { width:100%;height:220px;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,1,.36,1); }
+  .featured-card img { width:100%;height:340px;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,1,.36,1); }
   .featured-card:hover img { transform:scale(1.06); }
 
   .cta-strip { background:linear-gradient(135deg,#060d18 0%,#0a1628 40%,#060d18 100%);border-top:1px solid #1a2d47;border-bottom:1px solid #1a2d47; }
@@ -153,12 +154,28 @@ const GALLERY_ITEMS = [
   { id: 10,                image: '/15.jpeg', description: 'Two-day summit with keynotes from CERT-In officials and hands-on CTF challenges.' },
   { id: 11,         image: '/17.jpeg', description: '3D photogrammetric mapping of a mock crime scene.' },
   { id: 12,         image: '/19.jpeg', description: 'Learning scale-accurate forensic photography techniques.' },
+  { id: 13,        image: '/20.jpeg', description: 'New institutional kit bundle.' },
+  { id: 10,                image: '/22.jpeg', description: 'Two-day summit with keynotes from CERT-In officials and hands-on CTF challenges.' },
+  { id: 11,         image: '/23.jpeg', description: '3D photogrammetric mapping of a mock crime scene.' },
+  { id: 12,         image: '/24.jpeg', description: 'Learning scale-accurate forensic photography techniques.' },
+  { id: 9,        image: '/25.jpeg', description: 'New institutional kit bundle.' },
+  { id: 10,                image: '/26.jpeg', description: 'Two-day summit with keynotes from CERT-In officials and hands-on CTF challenges.' },
+  { id: 11,         image: '/27.jpeg', description: '3D photogrammetric mapping of a mock crime scene.' },
+  { id: 12,         image: '/28.jpeg', description: 'Learning scale-accurate forensic photography techniques.' },
+  { id: 9,        image: '/29.jpeg', description: 'New institutional kit bundle.' },
+  { id: 10,                image: '/30.jpeg', description: 'Two-day summit with keynotes from CERT-In officials and hands-on CTF challenges.' },
+  { id: 11,         image: '/31.jpeg', description: '3D photogrammetric mapping of a mock crime scene.' },
+  { id: 12,         image: '/32.jpeg', description: 'Learning scale-accurate forensic photography techniques.' },
+  { id: 9,        image: '/33.jpeg', description: 'New institutional kit bundle.' },
+  { id: 10,                image: '/34.jpeg', description: 'Two-day summit with keynotes from CERT-In officials and hands-on CTF challenges.' },
+  { id: 11,         image: '/35.jpeg', description: '3D photogrammetric mapping of a mock crime scene.' },
+  { id: 12,         image: '/36                      .jpeg', description: 'Learning scale-accurate forensic photography techniques.' },
 ]
 
 const FEATURED_ITEMS = [
-  { id: 'f1', tag: 'CASE STUDY · CYBER', accent: '#207eff', image: '/10.jpeg' },
-  { id: 'f2', tag: 'CASE STUDY · DOCUMENTS', accent: '#fa5330', image: '/11.jpeg' },
-  { id: 'f3', tag: 'INITIATIVE · TRAINING', accent: '#207eff', image: '/12.jpeg' },
+  { id: 'f1', tag: 'CASE STUDY · CYBER', accent: '#207eff', image: '/21.jpeg' },
+  { id: 'f2', tag: 'CASE STUDY · DOCUMENTS', accent: '#fa5330', image: '/25.jpeg' },
+  { id: 'f3', tag: 'INITIATIVE · TRAINING', accent: '#207eff', image: '/26.jpeg' },
 ]
 
 const CATEGORIES = ['All', 'Workshops', 'Investigation', 'Training', 'Kits & Tools', 'Events']
@@ -260,7 +277,8 @@ function MasonryGallery({ items, onOpen }) {
         <div className="masonry-container">
           {items.map((item, i) => (
             <div key={item.id} className="reveal pin-card" style={{ transitionDelay:`${(i % 8) * 0.05}s` }} onClick={() => onOpen(item)}>
-              <div style={{ position:'relative', overflow:'hidden', background:'#000', minHeight:160 }}>
+              {/* CHANGE 3: minHeight 160 → 260 */}
+              <div style={{ position:'relative', overflow:'hidden', background:'#000', minHeight:260 }}>
                 <img src={item.image} alt={item.title} loading="lazy" className="pin-img" style={{ width:'100%', height:'auto', display:'block' }} />
                 <div className="pin-overlay">
                   <div className="pin-action">
@@ -269,8 +287,8 @@ function MasonryGallery({ items, onOpen }) {
                 </div>
               </div>
               <div className="pin-content">
-                <CatBadge category={item.category} />
-                <div className="pin-title">{item.title}</div>
+                {/* <CatBadge category={item.category} /> */}
+                {/* <div className="pin-title">{item.title}</div> */}
                 <div className="font-mono-fl" style={{ fontSize:7, color:'rgba(32,126,255,0.5)', letterSpacing:'2px', textTransform:'uppercase' }}>FL-{String(item.id).padStart(3,'0')}</div>
               </div>
             </div>
@@ -300,7 +318,6 @@ function Lightbox({ item, items, onClose, onNav }) {
   return (
     <div className="lightbox-backdrop" onClick={e => { if (e.target === e.currentTarget) onClose() }}>
       <div className="lightbox-panel">
-        {/* Header */}
         <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'12px 16px', borderBottom:'1px solid #1a2d47', background:'#04080f', flexShrink:0 }}>
           <div style={{ display:'flex', alignItems:'center', gap:8 }}>
             <div className="live-dot" />
@@ -324,8 +341,6 @@ function Lightbox({ item, items, onClose, onNav }) {
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
           </div>
-
-        
         </div>
       </div>
     </div>
@@ -350,13 +365,13 @@ function FeaturedSection({ onOpen }) {
             <div key={item.id} className="reveal featured-card" style={{ transitionDelay:`${i * 0.12}s`, cursor:'pointer' }} onClick={() => onOpen({ ...item, id:item.id, category: item.tag.split(' · ')[1] || 'Investigation' })}>
               <div style={{ height:3, background:`linear-gradient(90deg,${item.accent},transparent)` }} />
               <div style={{ overflow:'hidden', position:'relative' }}>
-                <img src={item.image} alt={item.title} loading="lazy" style={{ width:'100%', height:220, objectFit:'cover', display:'block' }} />
+                <img src={item.image} alt={item.title} loading="lazy" style={{ width:'100%', height:340, objectFit:'cover', display:'block' }} />
                 <div style={{ position:'absolute', inset:0, background:'linear-gradient(to top,rgba(3,6,13,.85) 0%,rgba(3,6,13,.3) 60%,transparent 100%)' }} />
                 <div style={{ position:'absolute', top:12, left:12 }}>
-                  <span className="font-mono-fl" style={{ fontSize:8, letterSpacing:'2px', padding:'4px 10px', border:`1px solid ${item.accent}66`, background:`${item.accent}18`, color:item.accent, textTransform:'uppercase' }}>{item.tag}</span>
+                  {/* <span className="font-mono-fl" style={{ fontSize:8, letterSpacing:'2px', padding:'4px 10px', border:`1px solid ${item.accent}66`, background:`${item.accent}18`, color:item.accent, textTransform:'uppercase' }}>{item.tag}</span> */}
                 </div>
               </div>
-              <div >
+              <div>
                 {/* <h3 className="font-orbitron" style={{ fontWeight:900, color:'#fff', fontSize:14, letterSpacing:'0.08em', marginBottom:8, lineHeight:1.3 }}>{item.title}</h3> */}
                 {/* <p className="font-rajdhani" style={{ fontSize:13, color:'#8099b8', lineHeight:1.6 }}>{item.description.substring(0, 100)}...</p> */}
               </div>
@@ -397,7 +412,6 @@ function CtaSection() {
             Join Workshop
           </button></Link>
           <Link href="/contact">
-          
           <button className="btn-outline-fl">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Contact Us

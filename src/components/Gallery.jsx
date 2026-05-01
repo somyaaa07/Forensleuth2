@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState } from 'react'
 
 const gallery = [
-  { src: '/1.jpeg',  size: 'large' },
-  { src: '/6.jpeg',  size: 'small' },
-  { src: '/16.PNG', size: 'small' },
-  { src: '/17.jpeg', size: 'small' },
-  { src: '/15.jpeg', size: 'small' },
-  { src: '/19.jpeg', size: 'large' },
+  { src: '/21.jpeg',  size: 'large' },
+  { src: '/22.jpeg',  size: 'small' },
+  { src: '/23.jpeg', size: 'small' },
+  { src: '/26.jpeg', size: 'small' },
+  { src: '/27.jpeg', size: 'small' },
+  { src: '/28.jpeg', size: 'large' },
 ]
 
 const events = [
@@ -59,24 +59,24 @@ export default function Gallery() {
         .gallery-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          grid-template-rows: 260px 260px;
+          grid-template-rows: 420px 420px;
           gap: 6px;
         }
         .gallery-tile-span2 { grid-column: span 2; }
 
-        /* Tablet: 2 equal cols, each tile takes 1 col, large tiles span 2 */
+        /* Tablet */
         @media (max-width: 900px) {
           .gallery-grid {
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(4, 200px);
+            grid-template-rows: repeat(4, 320px);
           }
         }
 
-        /* Mobile: single column, all tiles equal height */
+        /* Mobile */
         @media (max-width: 540px) {
           .gallery-grid {
             grid-template-columns: 1fr;
-            grid-template-rows: repeat(6, 180px);
+            grid-template-rows: repeat(6, 260px);
           }
           .gallery-tile-span2 {
             grid-column: span 1 !important;
@@ -149,8 +149,6 @@ export default function Gallery() {
             <GalleryTile item={gallery[5]} i={5} hov={hov} setHov={setHov} extraClass="gallery-tile-span2" />
           </div>
         </div>
-
-   
 
       </div>
     </section>
