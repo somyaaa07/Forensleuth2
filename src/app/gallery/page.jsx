@@ -169,7 +169,7 @@ const GALLERY_ITEMS = [
   { id: 9,        image: '/33.jpeg', description: 'New institutional kit bundle.' },
   { id: 10,                image: '/34.jpeg', description: 'Two-day summit with keynotes from CERT-In officials and hands-on CTF challenges.' },
   { id: 11,         image: '/35.jpeg', description: '3D photogrammetric mapping of a mock crime scene.' },
-  { id: 12,         image: '/36                      .jpeg', description: 'Learning scale-accurate forensic photography techniques.' },
+  { id: 12,         image: '/36.jpeg', description: 'Learning scale-accurate forensic photography techniques.' },
 ]
 
 const FEATURED_ITEMS = [
